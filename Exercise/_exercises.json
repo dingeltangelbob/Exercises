@@ -1,0 +1,14 @@
+{
+	"1": {
+		task: [["A0001"]],
+		homework: [],
+		exercise: [],
+		extra: []
+	},
+	"2": {
+		task: [],
+		homework: [["A0001", "8"]],
+		exercise: [],
+		extra: []
+	}
+}

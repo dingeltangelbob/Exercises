@@ -1,0 +1,383 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Greek letters
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\rho}{\varrho}
+
+
+%%% Upper d for integrals
+\renewcommand{\d}{\mathop{}\!\mathrm{d}}
+
+
+%%% Infinity
+\newcommand{\oo}{\infty}
+
+
+%%% sigma-
+\newcommand{\sigmad}{\ensuremath{\sigma}-}
+
+
+%%% ^star
+\renewcommand{\star}{\ensuremath{^\ast}}
+
+
+%%% Dot to use in functions. 
+\newcommand{\fdot}{\:\cdot\:}
+
+
+%%% Number spaces
+\newcommand{\field}[1]{\mathbb{#1}}
+\newcommand{\numN}{\field N}
+\newcommand{\N}{\numN}
+\newcommand{\numNo}{\numN_0}
+
+\newcommand{\numZ}{\field Z}
+\newcommand{\Z}{\numZ}
+
+\newcommand{\numQ}{\field Q}
+\newcommand{\Q}{\numQ}
+
+\newcommand{\numR}{\field R}
+\newcommand{\R}{\numR}
+\newcommand{\numRp}{\numR^+}
+\newcommand{\numRpo}{\numRp_0}
+
+\newcommand{\numC}{\field C}
+\newcommand{\C}{\numC}
+
+\newcommand{\numK}{\field K}
+\newcommand{\K}{\numK}
+
+
+%%% Sets
+\renewcommand{\complement}{\mathsf{c}}
+\newcommand{\comp}{\complement}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\inner}[1]{#1^\circ}
+\newcommand{\restrict}[1]{\vert_{#1}}
+\newcommand{\subsubset}{\subset\subset}
+\newcommand{\relcomp}{\subsubset}
+\newcommand{\embed}{\hookrightarrow}
+\newcommand{\cembed}{\embed\embed}
+\newcommand{\cupd}{\mathbin{\mathaccent\cdot\cup}}
+\newcommand{\cupdot}{\cupd}
+
+
+%%% Symbols with limits
+% Convergence
+\newcommand{\conv}[1][]{\xrightarrow{\:#1\:}}
+\newcommand{\convn}[1][n]{\conv[#1\to\oo]}
+\newcommand{\wconv}[1][]{\xrightharpoonup{\:#1\:}}
+\newcommand{\wconvn}[1][n]{\wconv[#1\to\oo]}
+
+% Lim
+\newcommand{\limn}[1][n]{\lim_{#1\to\infty}}
+\newcommand{\limnl}[1][n]{\lim\limits_{#1\to\infty}}
+
+% Liminf
+\newcommand{\liminfn}[1][n]{\liminf_{#1\to\infty}}
+\newcommand{\liminfnl}[1][n]{\liminf\limits_{#1\to\infty}}
+
+% Limsup
+\newcommand{\limsupn}[1][n]{\limsup_{#1\to\infty}}
+\newcommand{\limsupnl}[1][n]{\limsup\limits_{#1\to\infty}}
+
+% Inf
+\newcommand{\infn}[1][n]{\inf_{#1\in\numN}}
+\newcommand{\infnl}[1][n]{\inf\limits_{#1\in\numN}}
+
+% Sup
+\newcommand{\supn}[1][n]{\sup_{#1\in\numN}}
+\newcommand{\supnl}[1][n]{\sup\limits_{#1\in\numN}}
+
+% Sum
+\newcommand{\sumn}[1][n]{\sum_{#1=1}^\oo}
+\newcommand{\sumnl}[1][n]{\sum\limits_{#1=1}^\oo}
+
+
+%%% Function spaces
+% Continuous functions
+\newcommand{\funC}{\mathcal C}
+\newcommand{\funCk}[1][k]{\funC^{#1}}
+\newcommand{\funCko}[1][k]{\funCk[#1]_0}
+\newcommand{\funCo}{\funCk[0]}
+\newcommand{\funCoo}{\funCk[\oo]}
+\newcommand{\funCooo}{\funCko[\oo]}
+\newcommand{\funClip}{\funCk[\text{Lip}]}
+\newcommand{\funCb}{\funC_\text{b}}
+\newcommand{\funCkg}[1][k,\gamma]{\funCk[#1]}
+\newcommand{\funCog}[1][0,\gamma]{\funCk[#1]}
+
+% Polynomials
+\newcommand{\funP}{\mathcal P}
+\newcommand{\funPn}[1][n]{\funP_{#1}}
+    
+% Lp
+\newcommand{\funL}{L}
+\newcommand{\funLp}[1][p]{\funL^{#1}}
+\newcommand{\funLoo}{\funLp[\oo]}
+\newcommand{\funLploc}[1][p]{\funL^{#1}_\text{loc}}
+
+\newcommand{\funl}{\mathcal L}
+\newcommand{\funlp}[1][p]{\funl^{#1}}
+\newcommand{\funloo}{\funlp[\oo]}
+\newcommand{\funlploc}[1][p]{\funl^{#1}_\text{loc}}
+    
+% Wkp
+\newcommand{\funW}{W}
+\newcommand{\funWkp}[1][k,p]{\funW^{#1}}
+\newcommand{\funWkpo}[1][k,p]{\funWkp[#1]_0}
+\newcommand{\funWkploc}[1][k,p]{\funWkp[#1]_\text{loc}}
+    
+% Hilbert spaces
+\newcommand{\funH}{H}
+\newcommand{\funHk}[1][k]{\funH^{#1}}
+\newcommand{\funHko}[1][k]{\funH[#1]_0}
+
+% Distributions
+\newcommand{\funD}{\mathcal D}
+\newcommand{\funS}{\mathcal S}
+
+% Factor space
+\newcommand{\factor}[2]{{}^{#1}\!/\!_{#2}}
+
+% Sequence spaces
+\newcommand{\seqlp}[1][p]{\ell^{#1}}
+\newcommand{\seqwkp}[1][k,p]{w^{#1}}
+\newcommand{\seqc}{c}
+\newcommand{\seqco}{\seqc_0}
+\newcommand{\seqd}{d}
+
+
+%%%Integral
+
+% \Xint{symbol} integral with symbol in it
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$} \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+
+% Averrage integral
+\def\aint{\Xint{\text{\hspace{.005\wd0}\tiny\rotatebox[origin=c]{-45}{/}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Math operators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Real part of a complex number
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+
+% Imaginary part of a complex number
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+
+% Signum function
+\DeclareMathOperator{\sgn}{sgn}
+
+% Linear Hull
+\DeclareMathOperator{\lin}{span}
+
+% Arcus cotangens
+\DeclareMathOperator{\arccot}{arccot}
+
+% Range
+\DeclareTMT{ran}{ran}{Bild}% Defines \textran
+\DeclareMathOperator{\ran}{\textran}
+
+% Support
+\DeclareMathOperator{\supp}{supp}
+
+% Trace
+\DeclareTMT{tr}{tr}{spur}
+\DeclareMathOperator{\tr}{\texttr}
+
+% Identity
+\DeclareMathOperator{\id}{id}
+
+% Rank
+\DeclareTMT{rk}{rk}{rg}
+\DeclareMathOperator{\rk}{\textrk}
+
+% Distance
+\DeclareMathOperator{\dist}{dist}
+
+% Ddiameter
+\DeclareMathOperator{\diam}{diam}
+
+% Indicator function
+\DeclareMathOperator{\ind}{\mathds{1}}
+
+% Cofactor matrix
+\DeclareMathOperator{\cof}{cof}
+
+% Accumulation values
+\DeclareTMT{av}{av}{HW}
+\DeclareMathOperator{\av}{\textav}
+
+% Accumulation points
+\DeclareTMT{ap}{ap}{HP}
+\DeclareMathOperator{\ap}{\textap}
+
+% Gradient
+\DeclareMathOperator{\grad}{\nabla}
+\DeclareMathOperator{\tgrad}{grad}
+
+% Divergence
+\let\div\relax
+\DeclareMathOperator{\div}{\grad \cdot}
+\DeclareMathOperator{\tdiv}{div}
+
+% Curl product
+\newcommand{\curl}{\times}
+
+% Rotation
+\DeclareMathOperator{\rot}{\grad \curl}
+\DeclareMathOperator{\trot}{rot}
+
+% Laplace
+\DeclareMathOperator{\laplace}{\Delta}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Paired delimiters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+
+
+% Absolut value 
+\DeclarePairedDelimiterXPP{\absDel}[2]{}{\lvert}{\rvert}{_{#2}}{#1}
+\def\abs{\@ifstar\@abs\@@abs}
+\def\absD{\@ifstar\@absD\@@absD}
+\newcommand{\@@abs}[2][]{\absDel*{#2}{#1}}
+\newcommand{\@@absD}[1][]{\absDel*{\fdot}{#1}}
+\newcommand{\@abs}[2][]{\absDel{#2}{#1}}
+\newcommand{\@absD}[1][]{\absDel{\fdot}{#1}}
+
+% Norm with ||
+\DeclarePairedDelimiterXPP{\normDel}[2]{}{\lVert}{\rVert}{_{#2}}{#1}
+\def\norm{\@ifstar\@norm\@@norm}
+\def\normD{\@ifstar\@normD\@@normD}
+\def\normop{\@ifstar\@normop\@@normop}
+\def\normopD{\@ifstar\@normopD\@@normopD}
+\newcommand{\@@norm}[2][]{\normDel*{#2}{#1}}
+\newcommand{\@@normD}[1][]{\normDel*{\fdot}{#1}}
+\newcommand{\@@normop}[1][]{\normDel*{#1}{\text{op}}}
+\newcommand{\@@normopD}{\normDel*{\fdot}{\text{op}}}
+\newcommand{\@norm}[2][]{\normDel{#2}{#1}}
+\newcommand{\@normD}[1][]{\normDel{\fdot}{#1}}
+\newcommand{\@normop}[1]{\normDel{#1}{\text{op}}}
+\newcommand{\@normopD}{\normDel{\fdot}{\text{op}}}
+
+% Norm with |||
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{
+ <5> <6> <7> <8> <9> <10> gen * matha <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+}{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+\DeclareFontSubstitution{U}{matha}{m}{n}
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+ <5> <6> <7> <8> <9> <10> <10.95> <12> <14.4> <17.28> <20.74> <24.88> mathx10
+}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathDelimiter{\vvvert}{0}{matha}{"7E}{mathx}{"17}
+\DeclarePairedDelimiterXPP{\NormDel}[2]{}{\vvvert}{\vvvert}{_{#2}}{#1}
+\def\Norm{\@ifstar\@Norm\@@Norm}
+\def\NormD{\@ifstar\@NormD\@@NormD}
+\newcommand{\@@Norm}[2][]{\NormDel*{#2}{#1}}
+\newcommand{\@@NormD}[1][]{\NormDel*{\fdot}{#1}}
+\newcommand{\@Norm}[2][]{\NormDel{#2}{#1}}
+\newcommand{\@NormD}[1][]{\NormDel{\fdot}{#1}}
+
+% Scalar product
+\DeclarePairedDelimiterXPP{\innerprodDel}[3]{}{\langle}{\rangle}{_{#3}}{#1,#2}
+\def\innerprod{\@ifstar\@innerprod\@@innerprod}
+\def\innerprodD{\@ifstar\@innerprodD\@@innerprodD}
+\newcommand{\@@innerprod}[3][]{\innerprodDel*{#2}{#3}{#1}}
+\newcommand{\@@innerprodD}[1][]{\innerprodDel*{\fdot}{\fdot}{#1}}
+\newcommand{\@innerprod}[3][]{\innerprodDel{#2}{#3}{#1}}
+\newcommand{\@innerprodD}[1][]{\innerprodDel{\fdot}{\fdot}{#1}}
+
+
+% Commutator
+\DeclarePairedDelimiterX{\commuDel}[2]{\lbrack}{\rbrack}{#1,#2}
+\newcommand{\commutator}[2]{\commuDel*{#1}{#2}}
+\newcommand{\commutatorbf}[2]{\commuDel*{\mathbf #1}{\mathbf #2}}
+
+
+% Bra-ket
+\DeclarePairedDelimiter{\braDel}{\langle}{\vert}
+\newcommand{\bra}[1]{\braDel*{#1}}
+\newcommand{\braD}{\bra{\fdot}}
+\DeclarePairedDelimiter{\ketDel}{\vert}{\rangle}
+\newcommand{\ket}[1]{\ketDel*{#1}}
+\newcommand{\ketD}{\ket{\fdot}}
+\DeclarePairedDelimiterX{\braketDel}[2]{\langle}{\rangle}{#1 \:\delimsize\vert\: #2}
+\newcommand{\braket}[2]{\braketDel*{#1}{#2}}
+
+
+% Equivalence class
+\DeclarePairedDelimiterXPP{\eqclDel}[2]{}{\lbrack}{\rbrack}{_{#2}}{#1}
+\newcommand{\eqcl}[2][]{\eqclDel*{#2}{#1}}
+\newcommand{\eqclD}[1][]{\eqclDel*{\fdot}{#1}}
+
+% Set
+\providecommand{\given}{} % Definiert ein leeren Command \given, damit er im \set Befehl stets neu definiert werden kann
+\DeclarePairedDelimiterX{\setDel}[1]{\lbrace}{\rbrace}{\renewcommand{\given}{\:\delimsize\vert\:}#1}
+\def\set{\@ifstar\@set\@@set}
+\newcommand{\@@set}[1]{\setDel*{#1}}
+\newcommand{\@set}[1]{\setDel{#1}}
+
+% Folge
+% M = nicht automatisch _#2 im inneren der Klammer
+% MM = auch nicht das n\in\numN am Ende automatisch
+\DeclarePairedDelimiterXPP{\seqDel}[2]{}{(}{)}{%
+    \def\tmp{#2}
+    \ifx\tmp\@nnil
+         \def\tmp{}
+     \else
+         _{#2}
+     \fi
+}{
+\def\tmp{#2}
+    \ifx\tmp\@nnil
+         #1,\ldots
+     \else
+         #1
+     \fi
+}
+
+\def\seq{\@ifstar\@seq\@@seq}
+\def\seqM{\@ifstar\@seqM\@@seqM}
+\def\seqMM{\@ifstar\@seqMM\@@seqMM}
+\def\subseq{\@ifstar\@subseq\@@subseq}
+\newcommand{\@@seq}[2][n]{\seqDel*{#2_{#1}}{#1}}
+\newcommand{\@seq}[2][n]{\seqDel{#2_{#1}}{#1}}
+\newcommand{\@@seqM}[2][n]{\seqDel*{#2}{#1}}
+\newcommand{\@seqM}[2][n]{\seqDel{#2}{#1}}
+\newcommand{\@@seqMM}[2][\@nil]{\seqDel*{#2}{#1}}
+\newcommand{\@seqMM}[2][\@nil]{\seqDel{#2}{#1}}
+\newcommand{\@@subseq}[3][k]{\seqDel*{#2_{#3_{#1}}}{#1}}%TODO two optional arguments
+\newcommand{\@subseq}[3][k]{\seqDel{#2_{#3_{#1}}}{#1}}%TODO two optional arguments
+\makeatother
+
+%%% Maps
+\newcommand{\fun}[5][x]{
+ \begin{aligned}
+  &#2 \colon &\!\!\!\! #3 &\to #4\\
+  &&\!\!\!\!#1 &\mapsto #5
+ \end{aligned}
+}
+
