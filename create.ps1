@@ -6,20 +6,16 @@ $Config = Get-Content $ConfigFile | ConvertFrom-Json
 $Name = Read-Host "Name"
 $Destination = "$($Config.destinationPath)\$Name"
 
-Write-Host $Destination
-exit
-
 # Copy Exercises directory to destination directory
-$SourcePath = Split-Path $PSCommandPath -Parent
-Copy-Item -Path "$SourcePath\Exercises" -Destination $Destination
+Copy-Item -Path "$PSScriptRoot\Exercises" -Destination $Destination -Recurse
 
 # Create the _create.ps1 script
 $CreateScriptPath = "$Destination\_create.ps1"
 $CreateScript = @"
-  # Load Create-Sheets function
-  . ".\Utils\.scripts\createSheets.ps1"
-  # Create the sheets
-  Create-Sheets -DatabasePath $Config.databasePath -Path $Destination
+# Load Create-Sheets function
+. ".\Utils\.scripts\createSheets.ps1"
+# Create the sheets
+Create-Sheets -DatabasePath "$($Config.databasePath)"
 "@
 New-Item -Type File -Path $CreateScriptPath
 Set-Content -Path $CreateScriptPath -Value $CreateScript
@@ -50,10 +46,10 @@ $Note = Get-YN -Message "Do you want a commented version?"
 # Create the _compile.ps1 script
 $CompileScriptPath = "$Destination\_compile.ps1"
 $CompileScript = @"
-  # Load Compile-Sheets function
-  . ".\Utils\.scripts\compileSheets.ps1"
-  # Compile the sheets
-  Compile-Sheets -Path $Destination -Task $Task -Exercise $Exercise -Note $Note
+# Load Compile-Sheets function
+. ".\Utils\.scripts\compileSheets.ps1"
+# Compile the sheets
+Compile-Sheets -Task `$$Task -Exercise `$$Exercise -Note `$$Note
 "@
 New-Item -Type File -Path $CompileScriptPath
 Set-Content -Path $CompileScriptPath -Value $CompileScript
