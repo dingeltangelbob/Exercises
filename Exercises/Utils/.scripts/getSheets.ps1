@@ -1,5 +1,5 @@
 function Get-Sheets {
-	$NumberStr = Read-Host "Whitch sheets do you want to create/compile? For example: '1'; '1,2'; '1-5, 8, 9-11'"
+	$NumberStr = Read-Host "Which sheets do you want to create/compile? For example: '1'; '1,2'; '1-5, 8, 9-11'"
 
 	$Numbers = @()
 	Foreach ($num in ($NumberStr -Split ",")) {
