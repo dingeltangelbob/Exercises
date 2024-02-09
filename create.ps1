@@ -3,22 +3,11 @@ $ConfigFile = ".\config.json"
 $Config = Get-Content $ConfigFile | ConvertFrom-Json
 
 # Get Name
-$Name = Read-Host "Name"
+$Name = Get-ChildItem -Path $($Config.databasePath) -Directory | Where-Object { -not $_.Name.StartsWith(".") } | Select-Object -ExpandProperty Name | Out-GridView -Title "Select a directory" -PassThru
+if ([String]::IsNullOrEmpty($Name)) {
+    exit
+}
 $Destination = "$($Config.destinationPath)\$Name"
-
-# Copy Exercises directory to destination directory
-Copy-Item -Path "$PSScriptRoot\Exercises" -Destination $Destination -Recurse
-
-# Create the _create.ps1 script
-$CreateScriptPath = "$Destination\_create.ps1"
-$CreateScript = @"
-# Load Create-Sheets function
-. ".\Utils\.scripts\createSheets.ps1"
-# Create the sheets
-Create-Sheets -DatabasePath "$($Config.databasePath)\$Name"
-"@
-New-Item -Type File -Path $CreateScriptPath
-Set-Content -Path $CreateScriptPath -Value $CreateScript
 
 # Yes or no Question as function
 function Get-YN {
@@ -42,6 +31,20 @@ function Get-YN {
 $Task = Get-YN -Message "Do you want to upload solutions for presence tasks separately?"
 $Exercise = Get-YN -Message "Do you want to upload solutions?"
 $Note = Get-YN -Message "Do you want a commented version?"
+
+# Copy Exercises directory to destination directory
+Copy-Item -Path "$PSScriptRoot\Exercises" -Destination $Destination -Recurse
+
+# Create the _create.ps1 script
+$CreateScriptPath = "$Destination\_create.ps1"
+$CreateScript = @"
+# Load Create-Sheets function
+. ".\Utils\.scripts\createSheets.ps1"
+# Create the sheets
+Create-Sheets -DatabasePath "$($Config.databasePath)\$Name"
+"@
+New-Item -Type File -Path $CreateScriptPath
+Set-Content -Path $CreateScriptPath -Value $CreateScript
 
 # Create the _compile.ps1 script
 $CompileScriptPath = "$Destination\_compile.ps1"
