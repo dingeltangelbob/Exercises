@@ -15,7 +15,7 @@ $CreateScript = @"
 # Load Create-Sheets function
 . ".\Utils\.scripts\createSheets.ps1"
 # Create the sheets
-Create-Sheets -DatabasePath "$($Config.databasePath)"
+Create-Sheets -DatabasePath "$($Config.databasePath)\$Name"
 "@
 New-Item -Type File -Path $CreateScriptPath
 Set-Content -Path $CreateScriptPath -Value $CreateScript
