@@ -1,4 +1,4 @@
 {
   databasePath: "C:\\Users\\user\\path\\to\\database",
-  destinationPath: ".\\"
+  destinationPath: ".\\out"
 }
