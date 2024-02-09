@@ -19,6 +19,7 @@ To set up the Lecture Exercise Sheet Generator, follow these steps:
         ```
     - Confirm the change by entering "Y" or "Yes" when prompted.
 3. Navigate to the extracted directory.
+4. Copy the `config_example.json` and name it `config.json`.
 4. Open the `config.json` file in a text editor.
 5. Configure the `config.json` file by setting the following values:
     - `"databasePath"`: Path to the database containing the exercises.
