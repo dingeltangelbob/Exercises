@@ -36,6 +36,7 @@
 
 % \SetDateOfFirstUpload{<year>}{<month>}{<day>}. Set the day of the first upload to <year>-<month>-<day>. The format of the date depends on the language of the document. You should set the date for consitency. Otherwise the automatic date calculation might fail.
 \newcommand{\SetDateOfFirstUpload}[3]{%
+\SaveDate%
 \day=#3%
 \month=#2%
 \year=#1%
@@ -86,39 +87,6 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Input configuration file
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeatother
-\input{./_config}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Set the default configuration values
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeatletter
-
-
-\SetLanguage{english}
-% Load the babel package immideately after the language is set. And befor the title is set. See https://www.ctan.org/pkg/babel
-\usepackage[\ks@lan]{babel}
-\if@ks@thc@\else
-\SetTitleName{Exercise Sheet}%
-\defcaptionname{ngerman}{\ks@title@name}{Übungsblatt}%
-\fi
-
-
-\SetSubTitle{}
-\SetFooter{}
-\SetUploadFrequence{7}
-\SetDaysUntilDeadline{7}
-\SetDeadlineTime{23:59}
-\SetLecturer{}
-\SetLecture{}
-\SetTerm{}
-\SetOffsetAfterSheet{0}{0}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Usepackages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -154,7 +122,7 @@
 
 % For the definition of the exercise and solution enviroment. See https://www.ctan.org/pkg/environ and https://www.ctan.org/pkg/ntheorem
 \usepackage{environ}
-\usepackage[amsmath]{ntheorem}
+\usepackage[amsmath,amsthm]{ntheorem}
 
 
 % For specification of the page layout. Header size, footsize, etc. See https://www.ctan.org/pkg/geometry
@@ -176,6 +144,38 @@
 
 % For the definition of the header and footer.
 \usepackage[headsepline,footsepline,singlespacing]{scrlayer-scrpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Input configuration file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+\input{./_config}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Set the default configuration values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+
+
+\SetLanguage{english}
+% Load the babel package immideately after the language is set. And befor the title is set. See https://www.ctan.org/pkg/babel
+\usepackage[\ks@lan]{babel}
+\if@ks@thc@\else
+\SetTitleName{Exercise Sheet}%
+\defcaptionname{ngerman}{\ks@title@name}{Übungsblatt}%
+\fi
+
+
+\SetSubTitle{}
+\SetFooter{}
+\SetUploadFrequence{7}
+\SetDaysUntilDeadline{7}
+\SetDeadlineTime{23:59}
+\SetLecturer{}
+\SetLecture{}
+\SetTerm{}
+\SetOffsetAfterSheet{0}{0}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -433,7 +433,7 @@
 
 % \ks@headerstyle[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. The Style will be like: "<header>:<opt>"
 \newcommand\ks@headerstyle[2][]{%
-\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+\item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont
 #2\theorem@separator #1}\hbox{\strut}}}]%
 }
 
@@ -533,6 +533,8 @@
 \NewExerciseLikeEnviroment{exercise}{Exercise}{Exercises}{Aufgabe}{Aufgaben}
 
 \NewExerciseLikeEnviroment[nonumber]{extra}{Extra}{Extra}{Zusatzaufgabe}{Zusatzaufgaben}
+
+% \NewExerciseLikeEnviroment[nonumber]{collection}{Col}{Col}{Col}{Col}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -637,6 +639,7 @@
 \fi}%
 \fi%
 }
+
 
 \makeatother
 

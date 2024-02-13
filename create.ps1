@@ -2,7 +2,7 @@
 $ConfigFile = ".\config.json"
 $Config = Get-Content $ConfigFile | ConvertFrom-Json
 
-# Get Name
+# Get Name of the lecture
 $Name = Get-ChildItem -Path $($Config.databasePath) -Directory | Where-Object { -not $_.Name.StartsWith(".") } | Select-Object -ExpandProperty Name | Out-GridView -Title "Select a directory" -PassThru
 if ([String]::IsNullOrEmpty($Name)) {
     exit
@@ -56,3 +56,35 @@ Compile-Sheets -Task `$$Task -Exercise `$$Exercise -Note `$$Note
 "@
 New-Item -Type File -Path $CompileScriptPath
 Set-Content -Path $CompileScriptPath -Value $CompileScript
+
+# Create the Exercise collection
+$CollectionPath = "$Destination\_collection.tex"
+$CollectionContent = @"
+\input{./Utils/preamble}
+
+\usepackage{currfile}
+\makeatletter
+\SetDate
+\SaveDate[\ks@upload]
+% \ks@headerstyle@collection[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. Espacially for collection.pdf
+\newcommand\ks@headerstyle@collection[2][]{%
+\item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont
+\currfilebase\theorem@separator #1}\hbox{\strut}}}]%
+}
+\renewtheoremstyle{exercise}{%
+\ks@headerstyle@collection{##1}% without optional argument
+}{%
+\ks@headerstyle@collection[~ ##3]{##1}% with optional argument
+}
+\makeatother
+\Enable{exercise}
+\begin{document}
+
+"@
+
+Get-ChildItem -Path "$($Config.databasePath)\$Name" | ForEach-Object {
+  $CollectionContent += "\input{" + ($_.FullName -replace '\\', '/') + "}`n"
+}
+$CollectionContent += "\end{document}"
+New-Item -Type File -Path $CollectionPath
+Set-Content -Path $CollectionPath -Value $CollectionContent
