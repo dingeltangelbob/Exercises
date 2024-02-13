@@ -641,6 +641,17 @@
 }
 
 
+% Define the switch and set it to false
+\newif\if@ks@tags\@ks@tagsfalse
+
+\newcommand{\tags}[1]{%
+\if@ks@tags{%
+\textbf{Tags:} #1\\
+}%
+\fi%
+}
+
+
 \makeatother
 
 \input{./Utils/custom}
