@@ -45,13 +45,14 @@ Once you have set up the Lecture Exercise Sheet Generator, follow these steps to
 4. Follow the prompts by typing "yes" or "no" to answer the questions accordingly.
 5. Once you have finished, the tool will generate the setup for creating the exercise sheets, which will be saved in the destination path specified in the `config.json` file. You can move the created directory wherever you want manually.
 
+### Create Exercises
+
+TODO
+
 ### Create Exercise Sheets
 
 1. Navigate to the Lecture directory and open the `_config.tex` file.
-2. Edit the file with the information for the lecture
-    - Options:
-    ```tex
-    /SetLanguage{<language>} %Select the language. Currently supported: ngerman, english
-    ```
+2. Edit the file with the information for the lecture, exercises and schedule
+3. Look at the `_collection.pdf` file for exercises 
 
 That's it! You've successfully created an exercise sheet for your lecture using the Lecture Exercise Sheet Generator.

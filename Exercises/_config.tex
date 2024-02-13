@@ -1,16 +1,47 @@
-\SetLanguage{ngerman}
+%%%% Language
 
-\SetLecturer{}
-\SetLecture{}
-\SetTerm{}
+%% Set the language of the exercise. Translatable keys will automatically translated to the selected language. For example: Date format, exercises
+%% Default: english. Currently supported: ngerman, english
+\SetLanguage{english}
 
-%\SetTitleName{Exercise Sheet}
-%\SetSubTitle{Please deliver your solution of the homework until \GetDeadline.}
-%SetFooter{Please deliver your solution of the homework until \GetDeadline.}
 
+
+%%%% Lecture information
+
+%% Set the information of the lecture.
+%% You can write in any text as argument.
+\SetLecturer{Mathematics I}
+\SetLecture{Done Joe}
+\SetTerm{ST 24}
+
+
+
+%%%% Schedule
+
+%% Set the Date of upload of the first exercise sheet. Usage \SetDateOfFirstUpload{<year>}{<month>}{<day>}
 \SetDateOfFirstUpload{2022}{10}{25}
-\SetUploadFrequence{7}
-\SetDaysUntilDeadline{7}
-\SetDeadlineTime{11:00}
 
-%\SetOffsetAfterSheet{<days>}{<sheet>}
+%% Set the frequence of uploads in days
+\SetUploadFrequence{7}
+
+%% Set the time in days students have to deliver their solution
+\SetDaysUntilDeadline{7}
+
+%% Set the time on day  until the students have to deliver their solution on the day of the deadline
+\SetDeadlineTime{11:00 a.m.}
+
+%% If there are holidays in the current term. You may want to pause the schedule. Use the \SetOffsetAfterSheet{<days>}{<sheet>} macro to pause the schedule for <days> days after sheet <sheet>. So the exercises (<sheet> + 1) will have a delay of <days> days before upload. For example, when there are 2 weeks of Christmas holidays before you want to upload the 10th sheet. You should uncomment the following line
+%\SetOffsetAfterSheet{14}{9}
+
+
+
+%%%% Sheet information
+
+%% Set the title of the Sheet. The number of the Sheet will automatically set after titles name. There are default values. So you may not want to uncomment this line.
+%\SetTitleName{Custom Title}
+
+%% Set the subtitle of the Sheet. There are default values. So you may not want to uncomment this line.
+%\SetSubTitle{Some custom subtitle. You better solves the exercises until \GetDeadline.}
+
+%% Set the footer of the Sheet. There are default values. So you may not want to uncomment this line.
+%SetFooter{Some custom footer. Good luck solving these excruciating exercises.}
