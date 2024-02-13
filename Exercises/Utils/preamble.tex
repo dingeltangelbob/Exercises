@@ -18,8 +18,8 @@
 
 
 % \SetTitleName{<name>}. Set the title name of the sheet to <name>. It only changes the name of the title, the number will add anyway and can't be removed. The title name will strored in \ks@title@name and the \if@ks@thc@ switch will globaly set to TRUE.
-\newcommand{\SetTitleName}[1]{%
-\providecommand\ks@title@name{#1}%
+\newcommand{\SetTitle}[1]{%
+\providecommand\ks@title{#1}%
 \@ks@thc@true%
 }
 
@@ -162,8 +162,8 @@
 % Load the babel package immideately after the language is set. And befor the title is set. See https://www.ctan.org/pkg/babel
 \usepackage[\ks@lan]{babel}
 \if@ks@thc@\else
-\SetTitleName{Exercise Sheet}%
-\defcaptionname{ngerman}{\ks@title@name}{Übungsblatt}%
+\SetTitle{Exercise Sheet \thenum}%
+\defcaptionname{ngerman}{\ks@title}{Übungsblatt \thenum}%
 \fi
 
 
@@ -303,7 +303,7 @@
 % Print title
 \AtBeginDocument{%
 \begin{center}%
- \LARGE \textbf{\ks@title@name\ \thenum} \\%
+ \LARGE \textbf{\ks@title} \\%
  \normalsize \ks@subtitle%
 \end{center}%
 }
