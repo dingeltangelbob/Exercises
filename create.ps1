@@ -83,7 +83,7 @@ $CollectionContent = @"
 "@
 
 Get-ChildItem -Path "$($Config.databasePath)\$Name" | ForEach-Object {
-  $CollectionContent += "\input{" + ($_.FullName -replace '\\', '/') + "}`n"
+  $CollectionContent += "\input{" + ($_.FullName -replace '\\', '/') + "}\newpage`n"
 }
 $CollectionContent += "\end{document}"
 New-Item -Type File -Path $CollectionPath
