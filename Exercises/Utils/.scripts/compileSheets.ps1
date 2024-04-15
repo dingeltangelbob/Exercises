@@ -50,7 +50,7 @@ function Compile-Sheets {
     }
 
     # Exercise Sheet without any solutions
-    Compile -File $File -Replace '%$1'
+    Compile -Name $File.Name -Replace '%$1'
 
     # Undo changes in the file made by the Compile cmdlet
     $tmp = (Get-Content -Path $File.Name -Raw -Encoding "UTF8") -replace "%\\Enable{(.*)}", "\Enable{task,homework,exercise,extra,note}"
