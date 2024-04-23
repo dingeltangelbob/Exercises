@@ -17,7 +17,7 @@ function Compile-Sheets {
 
     $Output = $Name.Split('.')[0] + $Suffix
 
-    if ($Overwrite -eq $false -and (Test-Path $Path$Output)) {
+    if ($Overwrite -eq $false -and (Test-Path $Path$Output.pdf)) {
       return
     }
 
