@@ -234,12 +234,17 @@
 }
 
 
-% \GetDeadline contains the day and time of the deadline for usage in the document. Note that the macro \today will be overwrited by the date of deadline. The result will be printed in the format "<nameOfDay>, <dateOfDeadline>, <timeOfDeadline>".
-\newcommand{\GetDeadline}{%
-\SetDate[\ks@deadline]%
-\DayName{\year}{\month}{\day}, \today, \ks@dlt%
+% \GetDeadline[<days>] contains the day and time of the deadline plus an additional <days> days to the deadline for usage in the document. The default value of <days> is 0. Note that the macro \today will be overwrited by the date of deadline. The result will be printed in the format "<nameOfDay>, <dateOfDeadline>, <timeOfDeadline>".
+\newcommand{\GetDeadline}[1][0]{%
+\GetDeadlineDay, \ks@dlt%
 }
 
+% \GetDeadlineDay contains the day of the deadline plus an additional <days> days to the deadline for usage in the document. The default value of <days> is 0. Note that the macro \today will be overwrited by the date of deadline. The result will be printed in the format "<nameOfDay>, <dateOfDeadline>".
+\newcommand{\GetDeadlineDay}[1][0]{%
+\SetDate[\ks@deadline]%
+\AdvanceDate[#1]%
+\DayName{\year}{\month}{\day}, \today%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Counter
