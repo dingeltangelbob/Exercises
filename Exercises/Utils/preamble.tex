@@ -116,15 +116,6 @@
 \usepackage{lmodern}
 
 
-% For better referencing. Espacially for translateable page ref. See https://ctan.org/pkg/cleveref
-\usepackage{cleveref}
-
-
-% For the definition of the exercise and solution enviroment. See https://www.ctan.org/pkg/environ and https://www.ctan.org/pkg/ntheorem
-\usepackage{environ}
-\usepackage[amsmath,amsthm]{ntheorem}
-
-
 % For specification of the page layout. Header size, footsize, etc. See https://www.ctan.org/pkg/geometry
 \usepackage[bottom=3.7cm, top=2cm]{geometry}
 
@@ -153,7 +144,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Set the default configuration values
+%%% Load language dependend usepackages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
 
@@ -161,6 +152,20 @@
 \SetLanguage{english}
 % Load the babel package immideately after the language is set. And befor the title is set. See https://www.ctan.org/pkg/babel
 \usepackage[\ks@lan]{babel}
+
+
+% For better referencing. Espacially for translateable page ref. See https://ctan.org/pkg/cleveref
+\usepackage[\ks@lan]{cleveref}
+
+
+% For the definition of the exercise and solution enviroment. See https://www.ctan.org/pkg/environ and https://www.ctan.org/pkg/ntheorem
+\usepackage{environ}
+\usepackage[amsmath,amsthm]{ntheorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Set the default configuration values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if@ks@thc@\else
 \SetTitle{Exercise Sheet \thenum}%
 \defcaptionname{ngerman}{\ks@title}{Übungsblatt \thenum}%
@@ -355,10 +360,6 @@
 \DeclareTMT{else}{else}{sonst}
 \DeclareTMT{even}{even}{gerade}
 \DeclareTMT{odd}{odd}{ungerade}
-
-
-% Make "Page" translatable
-\defcaptionname{ngerman}{\Cref@page@name}{Seite}
 
 % Make "Points" translatable
 \def\points{points}
