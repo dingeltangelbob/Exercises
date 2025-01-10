@@ -168,7 +168,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if@ks@thc@\else
 \SetTitle{Exercise Sheet \thenum}%
-\defcaptionname{ngerman}{\ks@title}{Übungsblatt \thenum}%
+\defcaptionname{ngerman}{\ks@title}{Übungsblatt \GetNumber}%
 \fi
 
 
@@ -259,7 +259,6 @@
 % Declare a counter for the sheets. The value of the counter has to be set in every sheet seperately with the \SetNumber command.
 \newcounter{num}
 
-
 % \SetNumber{<value>}. Set the number of the sheet to <value>. You have to set the number on each sheet. After the number is set, the upload date and the deadline will be calculated
 \newcommand{\SetNumber}[1]{%
 \setcounter{num}{#1}%set counter
@@ -277,6 +276,9 @@
 \AdvanceDate[\the\numexpr\ks@dud+\ks@deadline@offset\relax]% increase the date of current upload by the days until delivery
 \SaveDate[\ks@deadline]% save the current day, which is "DateOfFirstUpload + x + dud" at the \ks@deadline macro
 }
+
+% \GetNumber is the number of the sheet in a two digit format. To get the plain number use \thenum instead.
+\newcommand{\GetNumber}{\two@digits\thenum}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
