@@ -26,7 +26,7 @@
 \renewcommand{\star}{\ensuremath{^\ast}}
 
 
-%%% Dot to use in functions. 
+%%% Dot to use in functions.
 \newcommand{\fdot}{\:\cdot\:}
 
 
@@ -116,7 +116,7 @@
 % Polynomials
 \newcommand{\funP}{\mathcal P}
 \newcommand{\funPn}[1][n]{\funP_{#1}}
-    
+
 % Lp
 \newcommand{\funL}{L}
 \newcommand{\funLp}[1][p]{\funL^{#1}}
@@ -127,13 +127,13 @@
 \newcommand{\funlp}[1][p]{\funl^{#1}}
 \newcommand{\funloo}{\funlp[\oo]}
 \newcommand{\funlploc}[1][p]{\funl^{#1}_\text{loc}}
-    
+
 % Wkp
 \newcommand{\funW}{W}
 \newcommand{\funWkp}[1][k,p]{\funW^{#1}}
 \newcommand{\funWkpo}[1][k,p]{\funWkp[#1]_0}
 \newcommand{\funWkploc}[1][k,p]{\funWkp[#1]_\text{loc}}
-    
+
 % Hilbert spaces
 \newcommand{\funH}{H}
 \newcommand{\funHk}[1][k]{\funH^{#1}}
@@ -190,6 +190,9 @@
 
 % Arcus cotangens
 \DeclareMathOperator{\arccot}{arccot}
+
+% Graph
+\DeclareMathOperator{\graph}{graph}
 
 % Range
 \DeclareTMT{ran}{ran}{Bild}% Defines \textran
@@ -255,7 +258,7 @@
 \makeatletter
 
 
-% Absolut value 
+% Absolut value
 \DeclarePairedDelimiterXPP{\absDel}[2]{}{\lvert}{\rvert}{_{#2}}{#1}
 \def\abs{\@ifstar\@abs\@@abs}
 \def\absD{\@ifstar\@absD\@@absD}
