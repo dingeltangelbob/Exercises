@@ -1,10 +1,10 @@
 {
 	"1": [
-		{type: "task", name: "A0001"},
-		{type: "homework", name: "A0001", points: "8"}
+		{"type": "task", "name": "A0001"},
+		{"type": "homework", "name": "A0001", "points": "8"}
 	],
 	"2": [
-		{name: "A0001"},
-		{type: "extra", name: "A0001", points: "8"}
+		{"name": "A0001"},
+		{"type": "extra", "name": "A0001", "points": "8"}
 	]
 }
