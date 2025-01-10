@@ -1,4 +1,4 @@
 {
-  databasePath: "C:\\Users\\user\\example\\path",
-  destinationPath: ".\\out"
+  "databasePath": "C:\\Users\\user\\example\\path",
+  "destinationPath": ".\\out"
 }
