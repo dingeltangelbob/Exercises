@@ -33,6 +33,11 @@ function Create-Sheets {
   		If ($Item.points) {
   			$tmp = $tmp -replace "(\\begin{$Type}\[.*)\]", ('$1 (' + $Item.points + ' \points)]')
   		}
+      if ($Item.post -or $Item.post -eq "") {
+        $tmp += "`n`n$($Item.post)`n"
+      } else {
+        $tmp += "`n`n\NewpageIfSolution[note]`n"
+      }
   		$Content += "`n" + $tmp
   	}
 
