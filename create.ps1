@@ -8,6 +8,7 @@ if ([String]::IsNullOrEmpty($Name)) {
     exit
 }
 $Destination = "$($Config.destinationPath)\$Name"
+$DatabasePath = "$($Config.databasePath)\$Name"
 
 # Yes or no Question as function
 function Get-YN {
@@ -41,7 +42,7 @@ $CreateScript = @"
 # Load Create-Sheets function
 . ".\Utils\.scripts\createSheets.ps1"
 # Create the sheets
-Create-Sheets -DatabasePath "$($Config.databasePath)\$Name"
+Create-Sheets -DatabasePath "$DatabasePath"
 "@
 New-Item -Type File -Path $CreateScriptPath
 Set-Content -Path $CreateScriptPath -Value $CreateScript
@@ -57,34 +58,7 @@ Compile-Sheets -Task `$$Task -Exercise `$$Exercise -Note `$$Note
 New-Item -Type File -Path $CompileScriptPath
 Set-Content -Path $CompileScriptPath -Value $CompileScript
 
+# Load getCollection File
+. ".\getCollection.ps1"
 # Create the Exercise collection
-$CollectionPath = "$Destination\_collection.tex"
-$CollectionContent = @"
-\input{./Utils/preamble}
-
-\usepackage{currfile}
-\makeatletter
-\SetDate
-\SaveDate[\ks@upload]
-% \ks@headerstyle@collection[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. Espacially for collection.pdf
-\newcommand\ks@headerstyle@collection[2][]{%
-\item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont
-\currfilebase\theorem@separator #1}\hbox{\strut}}}]%
-}
-\renewtheoremstyle{exercise}{%
-\ks@headerstyle@collection{##1}% without optional argument
-}{%
-\ks@headerstyle@collection[~ ##3]{##1}% with optional argument
-}
-\makeatother
-\Enable{exercise}
-\begin{document}
-
-"@
-
-Get-ChildItem -Path "$($Config.databasePath)\$Name" | ForEach-Object {
-  $CollectionContent += "\input{" + ($_.FullName -replace '\\', '/') + "}\newpage`n"
-}
-$CollectionContent += "\end{document}"
-New-Item -Type File -Path $CollectionPath
-Set-Content -Path $CollectionPath -Value $CollectionContent
+Get-Collection -Path $Destination -DatabasePath $DatabasePath
