@@ -10,34 +10,13 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Variables and default values
+%%% Class based variables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcounter{num}
 \def\ks@fontsize{10pt}
-
 \def\ks@language{english}
-\def\ks@title@text{Exercise Sheet}
-\def\ks@collection{Collection of exercises}
-\def\ks@subtitle@text{}
-\def\ks@closure@text{}
-\def\ks@subclosure@text{}
-\def\ks@footer@text{}
-\def\ks@footer@page{Page \thepage\ of \labelcpageref{lastpage}}
-\def\ks@uploadFrequency{7}
-\def\ks@daysUntilDeadline{7}
-\def\ks@deadlineTime{}
-\def\ks@offset{0}
-\def\ks@offset@sheet{0}
-
-\def\ks@title{\ks@title@text}
-\def\ks@subtitle{\ks@subtitle@text}
-\def\ks@closure{\ks@closure@text}
-\def\ks@subclosure{\ks@subclosure@text}
-\def\ks@footer{\ks@footer@text}
-\def\ks@lecture{}
-\def\ks@lecturer{}
-\def\ks@term{}
+\newif\if@ks@option@collection
+\newif\if@ks@option@onefile
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,21 +29,54 @@
 \DeclareOption{11pt}{\def\ks@fontsize{11pt}}
 \DeclareOption{10pt}{\def\ks@fontsize{10pt}}
 \DeclareOption{collection}{
+    \@ks@option@collectiontrue
     \setcounter{secnumdepth}{0}% Disables numbering of sections
-    \def\ks@title{\ks@collection}
-    \def\ks@subtitle{}
-    \def\ks@closure{}
-    \def\ks@subclosure{}
-    \def\ks@footer{}
-    % headerstyle for collection
-    \newcommand\ks@headerstyle[2][]%
-    {\item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont\currfilebase\theorem@separator #1}\hbox{\strut}}}]}%
 }
+\DeclareOption{onefile}{\@ks@option@onefiletrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrartcl}}
 \ProcessOptions\relax
 
 % Load parent class
 \LoadClass[\ks@fontsize, final, \ks@language]{scrartcl}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Variables and default values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcounter{num}
+
+\def\ks@title@text{Exercise Sheet}
+\def\ks@title@collection{Collection of exercises}
+\def\ks@subtitle@text{}
+\def\ks@closure@text{}
+\def\ks@subclosure@text{}
+\def\ks@footer@text{}
+\def\ks@footer@page{Page \thepage\ of \labelcpageref{lastpage}}
+\def\ks@uploadFrequency{7}
+\def\ks@daysUntilDeadline{7}
+\def\ks@deadlineTime{}
+\def\ks@offset{0}
+\def\ks@offset@sheet{0}
+
+\if@ks@option@collection
+    \def\ks@title{\ks@title@collection}
+    \def\ks@subtitle{}
+    \def\ks@closure{}
+    \def\ks@subclosure{}
+    \def\ks@footer{}
+\else
+    \def\ks@title{\ks@title@text}
+    \def\ks@subtitle{\ks@subtitle@text}
+    \def\ks@closure{\ks@closure@text}
+    \def\ks@subclosure{\ks@subclosure@text}
+    \def\ks@footer{\ks@footer@text}
+\fi
+
+\def\ks@lecture{}
+\def\ks@lecturer{}
+\def\ks@term{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,10 +198,10 @@
 \newcommand{\SetOffsetAfterSheet}[2]{\def\ks@offset{#1}\def\ks@offset@sheet{#2}}
 
 \newcommand{\SetTitle}[1]{\def\ks@title@text{#1}}
-\newcommand{\SetSubtitle}[1]{\def\ks@subtitle{#1}}
+\newcommand{\SetSubtitle}[1]{\def\ks@subtitle@text{#1}}
 \newcommand{\SetClosure}[1]{\def\ks@closure@text{#1}}
-\newcommand{\SetSubclosure}[1]{\def\ks@subclosure{#1}}
-\newcommand{\SetFooter}[1]{\def\ks@footer{#1}}
+\newcommand{\SetSubclosure}[1]{\def\ks@subclosure@text{#1}}
+\newcommand{\SetFooter}[1]{\def\ks@footer@text{#1}}
 
 \newcommand{\SetLecture}[1]{\def\ks@lecture{#1}}
 \newcommand{\SetLecturer}[1]{\def\ks@lecturer{#1}}
@@ -220,6 +232,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Title and Closure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \AtBeginDocument{
     \begin{center}
         \LARGE \textbf{\ks@title} \\[0.2em]
@@ -324,16 +337,23 @@
 % Set the spacing after a theorem
 \theorempostskip{2\topsep}
 
-% \ks@headerstyle[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. The Style will be like: "<header>:<opt>"
-\providecommand\ks@headerstyle[2][]{%
-    \item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont
-                #2\theorem@separator #1}\hbox{\strut}}}]%
-}
+%% \ks@headerstyle[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. The Style will be like: "<header>:<opt>"
+\if@ks@option@collection
+    % headerstyle for collection
+    \newcommand\ks@headerstyle[2][]{%
+        \item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont\currfilebase\theorem@separator #1}\hbox{\strut}}}]%
+    }%
+\else
+    \newcommand\ks@headerstyle[2][]{%
+        \item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont #2\theorem@separator #1}\hbox{\strut}}}]%
+    }%
+\fi
+
+
 
 % \ks@headerstyle@solution[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. The Style will be like: "<header>:"
 \newcommand\ks@headerstyle@solution[1]{%
-    \item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont
-                #1\theorem@separator}\hbox{\strut}}}]%
+    \item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont #1\theorem@separator}\hbox{\strut}}}]%
 }
 
 % Define the exercise theoremstyle
@@ -374,17 +394,15 @@
     \edef\tmpsin{{ngerman}{\csname #1autorefname\endcsname}{#4}}
     \edef\tmpplu{{ngerman}{\csname #1autorefnames\endcsname}{#5}}
     \edef\tmp{{#1}{\csname #1autorefname\endcsname}{\csname #1autorefnames\endcsname}}
-
     \expandafter\def\csname #1autorefname\endcsname{#2}% Define the name of the translatable enviroment
-    %
     \expandafter\def\csname #1autorefnames\endcsname{#2}% Define the plural name of the enviroment (only for use with cleverref)
-    %
-    \expandafter\newtheorem{#1}{\csname #1autorefname\endcsname}[num]% Define the enviroment
-    %
+    \if@ks@option@onefile
+        \expandafter\newtheorem{#1}{\csname #1autorefname\endcsname}% Define the enviroment
+    \else
+        \expandafter\newtheorem{#1}{\csname #1autorefname\endcsname}[num]% Define the enviroment
+    \fi
     \expandafter\defcaptionname\tmpsin% Make the caption translatable to german
-    %
     \expandafter\defcaptionname\tmpplu% Make the plural translatable (only for use with cleverref)
-    %
     \expandafter\crefname\tmp% Tell cref the caption and its plural.
 }
 
