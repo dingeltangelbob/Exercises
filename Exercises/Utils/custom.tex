@@ -1,3 +1,43 @@
+% Default math stuff. See https://www.ctan.org/pkg/mathtools
+\RequirePackage{mathtools}
+
+% Add additional math symbols.
+\RequirePackage{amssymb}%TODO For what exactly is it needed
+
+% Add font to define the indicator function. See https://www.ctan.org/tex-archive/fonts/doublestroke
+\RequirePackage{dsfont}
+
+% Make the look of the text prettier. See https://www.namsu.de/Extra/pakete/Lmodern.html
+\RequirePackage{lmodern}
+
+% Center a colon to the mathematical axis. An ordinary colon can be output with \ordinarycolon
+\mathtoolsset{centercolon}
+\newcommand{\coloneqq}{:=}
+\renewcommand{\colon}{:}
+
+% \DeclareTMT{<name>}{<english>}{<german>} Create a macro \text<name> which is translatable. Additionally create a macro \t<name> which is the translateable text in a text enviroment and a space infront. To make a space after the text use \t<name>\ or \t<name>{}
+\newcommand{\DeclareTMT}[3]{%
+    \edef\tmp{{ngerman}{\csname text#1\endcsname}{#3}}
+    \expandafter\def\csname text#1\endcsname{#2}%
+    \expandafter\defcaptionname\tmp%
+    \expandafter\def\csname t#1\endcsname{\text{ \csname text#1\endcsname}}%
+}
+
+\DeclareTMT{on}{on}{auf}
+\DeclareTMT{of}{of}{von}
+\DeclareTMT{and}{and}{und}
+\DeclareTMT{or}{or}{oder}
+\DeclareTMT{in}{in}{in}
+\DeclareTMT{for}{for}{für}
+\DeclareTMT{forall}{for all}{für alle}
+\DeclareTMT{with}{with}{mit}
+\DeclareTMT{if}{if}{falls}
+\DeclareTMT{else}{else}{sonst}
+\DeclareTMT{even}{even}{gerade}
+\DeclareTMT{odd}{odd}{ungerade}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Symbols
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
