@@ -4,7 +4,7 @@ function Get-Collection {
         [string]$DatabasePath=".\Exercises\",
         [string]$Path = ".\",
         [bool]$Overwrite=$false,
-        [string]$Options = ""
+        [string]$Options = "english"
     )
 
     $outputFile = Join-Path -Path $Path -ChildPath "_collection.tex"
