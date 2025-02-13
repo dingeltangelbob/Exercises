@@ -187,6 +187,8 @@
 
 \newcommand{\SetTitle}[1]{\def\ks@title@text{#1}}
 \newcommand{\SetSubtitle}[1]{\def\ks@subtitle{#1}}
+\newcommand{\SetClosure}[1]{\def\ks@closure@text{#1}}
+\newcommand{\SetSubclosure}[1]{\def\ks@subclosure{#1}}
 \newcommand{\SetFooter}[1]{\def\ks@footer{#1}}
 
 \newcommand{\SetLecture}[1]{\def\ks@lecture{#1}}

@@ -1,8 +1,9 @@
-function Create-Sheets {
+function New-Sheets {
   param (
     [string]$DatabasePath = ".\Exercises\",
     [string]$Path = ".\",
-    [bool]$Overwrite=$false
+    [bool]$Overwrite=$false,
+    [string]$Options=""
   )
 
   # Get the prefix of the .tex file
@@ -23,7 +24,7 @@ function Create-Sheets {
     }
 
     # Set the begin of the document
-    $Content = "\input{./Utils/preamble}`n\SetNumber{$($Sheet.Name)}`n`n\Enable{task,homework,exercise,extra,note}`n`n\begin{document}"
+    $Content = "\documentclass[$($Options)]{exercises}`n\SetNumber{$($Sheet.Name)}`n`n\DisplayMode{task,homework,exercise,extra,note}`n`n\begin{document}`n"
 
     # Add the exercises to the content
     foreach ($Item in $Sheet.Value) {
@@ -34,9 +35,9 @@ function Create-Sheets {
   			$tmp = $tmp -replace "(\\begin{$Type}\[.*)\]", ('$1 (' + $Item.points + ' \points)]')
   		}
       if ($Item.post -or $Item.post -eq "") {
-        $tmp += "`n`n$($Item.post)`n"
+        $tmp += "`n$($Item.post)`n"
       } else {
-        $tmp += "`n`n\NewpageIfSolution[note]`n"
+        $tmp += "`n\NewpageIfSolution[note]`n"
       }
   		$Content += "`n" + $tmp
   	}

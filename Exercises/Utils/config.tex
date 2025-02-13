@@ -1,47 +1,18 @@
-%%%% Language
+% Title and Subtitle
+\SetTitle{Exercise Sheet \GetNumber} % Default: Exercise Sheet
+\SetSubtitle{Submit by \GetDeadline\ to Moodle.} % Default: (Empty)
+\SetClosure{Please inform us about any typos you found.} % Default: (Empty)
+\SetSubclosure{Good Luck!} % Default: (Empty)
+\SetFooter{Department of Mathematics on \GetUpload.} % Default: (Empty)
 
-%% Set the language of the exercise. Translatable keys will automatically translated to the selected language. For example: Date format, exercises
-%% Default: english. Currently supported: ngerman, english
-\SetLanguage{english}
+% Lecture Details
+\SetLecture{Analysis 1} % Default: (Empty)
+\SetLecturer{Prof. Dr. John Doe} % Default: (Empty)
+\SetTerm{Winter 2025/2026} % Default: (Empty)
 
-
-
-%%%% Lecture information
-
-%% Set the information of the lecture.
-%% You can write in any text as argument.
-\SetLecturer{Done Joe}
-\SetLecture{Mathematics I}
-\SetTerm{WS 24}
-
-
-
-%%%% Schedule
-
-%% Set the Date of upload of the first exercise sheet. Usage \SetDateOfFirstUpload{<year>}{<month>}{<day>}
-\SetDateOfFirstUpload{2024}{10}{21}
-
-%% Set the frequence of uploads in days
-\SetUploadFrequence{7}
-
-%% Set the time in days students have to deliver their solution
-\SetDaysUntilDeadline{7}
-
-%% Set the time on day  until the students have to deliver their solution on the day of the deadline
-\SetDeadlineTime{11:00 a.m.}
-
-%% If there are holidays in the current term. You may want to pause the schedule. Use the \SetOffsetAfterSheet{<days>}{<sheet>} macro to pause the schedule for <days> days after sheet <sheet>. So the exercises (<sheet> + 1) will have a delay of <days> days before upload. For example, when there are 2 weeks of Christmas holidays before you want to upload the 10th sheet. You should uncomment the following line
-% \SetOffsetAfterSheet{14}{9}
-
-
-
-%%%% Sheet information
-
-%% Set the title of the Sheet. The number of the Sheet will automatically set after titles name. There are default values. So you may not want to uncomment this line.
-% \SetTitle{Custom Title \GetNumber}
-
-%% Set the subtitle of the Sheet. There are default values. So you may not want to uncomment this line.
-% \SetSubTitle{Some custom subtitle. You better solves the exercises until \GetDeadline.}
-
-%% Set the footer of the Sheet. There are default values. So you may not want to uncomment this line.
-% \SetFooter{Some custom footer. Good luck solving these excruciating exercises.}
+% Exercise Schedule
+\SetDateOfFirstUpload{2025}{01}{15} % Mandatory for automatic schedule calculations.
+\SetUploadFrequence{14} % Default: 7
+\SetDaysUntilDeadline{14} % Default: 7
+\SetDeadlineTime{11:59 p.m.} % Default: (Empty)
+\SetOffsetAfterSheet{14}{9} % Default: No offset. Adds a 14-day break after sheet 9.

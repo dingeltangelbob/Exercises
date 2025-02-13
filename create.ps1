@@ -33,16 +33,32 @@ $Task = Get-YN -Message "Do you want to upload solutions for presence tasks sepa
 $Exercise = Get-YN -Message "Do you want to upload solutions?"
 $Note = Get-YN -Message "Do you want a commented version?"
 
+# Script to ask for language selection and update LaTeX document
+Write-Host "Select the language for your exercise sheet:"
+Write-Host "1. English"
+Write-Host "2. German"
+
+# Get user input
+$choice = Read-Host "Enter the number of your choice (1 or 2)"
+
+# Determine language based on selection
+if ($choice -eq "2") {
+    $Options = "ngerman"
+} else {
+    Write-Host "Invalid selection. Defaulting to English."
+    $Options = "english"
+}
+
 # Copy Exercises directory to destination directory
 Copy-Item -Path "$PSScriptRoot\Exercises" -Destination $Destination -Recurse
 
-# Create the _create.ps1 script
-$CreateScriptPath = "$Destination\_create.ps1"
+# Create the _generate.ps1 script
+$CreateScriptPath = "$Destination\_generate.ps1"
 $CreateScript = @"
-# Load Create-Sheets function
+# Load New-Sheets function
 . ".\Utils\.scripts\createSheets.ps1"
 # Create the sheets
-Create-Sheets -DatabasePath "$DatabasePath"
+New-Sheets -DatabasePath "$DatabasePath" -Options "$Options"
 "@
 New-Item -Type File -Path $CreateScriptPath
 Set-Content -Path $CreateScriptPath -Value $CreateScript
@@ -61,4 +77,4 @@ Set-Content -Path $CompileScriptPath -Value $CompileScript
 # Load getCollection File
 . ".\getCollection.ps1"
 # Create the Exercise collection
-Get-Collection -Path $Destination -DatabasePath $DatabasePath
+Get-Collection -Path "$Destination" -DatabasePath "$DatabasePath" -Options "$Options"

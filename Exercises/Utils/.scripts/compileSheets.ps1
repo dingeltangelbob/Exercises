@@ -21,7 +21,7 @@ function Compile-Sheets {
       return
     }
 
-    $tmp = (Get-Content -Path $Name -Raw -Encoding "UTF8") -replace "(\\Enable{(.*)})", $Replace
+    $tmp = (Get-Content -Path $Name -Raw -Encoding "UTF8") -replace "(\\DisplayMode{(.*)})", $Replace
     Set-Content -Encoding "UTF8" -Path $Name -Value $tmp
 
     pdflatex -jobname $Output $Name
@@ -36,24 +36,24 @@ function Compile-Sheets {
 
     # Solution of presence tasks
     if ($Task) {
-      Compile -Name $File.Name -Suffix "_presence" -Replace "\Enable{task}"
+      Compile -Name $File.Name -Suffix "_presence" -Replace "\DisplayMode{task}"
     }
     # Solution of all exercises
     if ($Exercise) {
-      Compile -Name $File.Name -Suffix "_solution" -Replace "\Enable{task,homework,exercise,extra}"
+      Compile -Name $File.Name -Suffix "_solution" -Replace "\DisplayMode{task,homework,exercise,extra}"
     }
     # Commented version
     if ($Note) {
-      Compile -Name $File.Name -Suffix "_commented" -Replace "\Enable{task,homework,exercise,extra,note}"
+      Compile -Name $File.Name -Suffix "_commented" -Replace "\DisplayMode{task,homework,exercise,extra,note}"
     } elseif (-not $Exercise) {
-      Compile -Name $File.Name -Suffix "_solution" -Replace "\Enable{task,homework,exercise,extra}"
+      Compile -Name $File.Name -Suffix "_solution" -Replace "\DisplayMode{task,homework,exercise,extra}"
     }
 
     # Exercise Sheet without any solutions
     Compile -Name $File.Name -Replace '%$1'
 
     # Undo changes in the file made by the Compile cmdlet
-    $tmp = (Get-Content -Path $File.Name -Raw -Encoding "UTF8") -replace "%\\Enable{(.*)}", "\Enable{task,homework,exercise,extra,note}"
+    $tmp = (Get-Content -Path $File.Name -Raw -Encoding "UTF8") -replace "%\\DisplayMode{(.*)}", "\DisplayMode{task,homework,exercise,extra,note}"
     Set-Content -Encoding "UTF8" -Path $File.Name -Value $tmp
 
     # Remove unnecessary files

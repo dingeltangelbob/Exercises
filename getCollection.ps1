@@ -3,7 +3,8 @@ function Get-Collection {
     param (
         [string]$DatabasePath=".\Exercises\",
         [string]$Path = ".\",
-        [bool]$Overwrite=$false
+        [bool]$Overwrite=$false,
+        [string]$Options = "[collection]"
     )
 
     $outputFile = Join-Path -Path $Path -ChildPath "_collection.tex"
@@ -46,23 +47,9 @@ function Get-Collection {
 
     # Start writing the output .tex file
     $outputContent = @(
-        "\input{./Utils/preamble}",
+        "\documentclass[$($Options),collection]{exercises}",
         "",
-        "\usepackage{currfile}",
-        "\setcounter{secnumdepth}{0}",
-        "\makeatletter",
-        "\SetDate",
-        "\SaveDate[\ks@upload]",
-        "% \ks@headerstyle@collection[<opt>]{<header>} Define custome header style so that the exercises automatically start in the new line. Espacially for collection.pdf",
-        "\newcommand\ks@headerstyle@collection[2][]%",
-        "{\item[\rlap{\vbox{\hbox{\hskip\labelsep\theorem@headerfont\currfilebase\theorem@separator #1}\hbox{\strut}}}]}%",
-        "\renewtheoremstyle{exercise}{%",
-        "\ks@headerstyle@collection{##1}% without optional argument",
-        "}{%",
-        "\ks@headerstyle@collection[~ ##3]{##1}% with optional argument",
-        "}",
-        "\makeatother",
-        "\Enable{exercise,note}",
+        "\DisplayMode{exercise,note,tags}",
         "\begin{document}",
         "\tableofcontents"
     )
