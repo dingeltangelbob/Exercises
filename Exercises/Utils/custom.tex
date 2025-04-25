@@ -10,6 +10,9 @@
 % Make the look of the text prettier. See https://www.namsu.de/Extra/pakete/Lmodern.html
 \RequirePackage{lmodern}
 
+% To make simple graphics. See https://tikz.dev/
+\RequirePackage{tikz}
+
 % Center a colon to the mathematical axis. An ordinary colon can be output with \ordinarycolon
 \mathtoolsset{centercolon}
 \newcommand{\coloneqq}{:=}
@@ -57,6 +60,10 @@
 %%% Infinity
 \newcommand{\oo}{\infty}
 
+%%% Logical operators
+\newcommand{\lif}{\Longrightarrow}
+\newcommand{\lfi}{\Longleftarrow}
+\newcommand{\liff}{\Longleftrightarrow}
 
 %%% sigma-
 \newcommand{\sigmad}{\ensuremath{\sigma}-}
