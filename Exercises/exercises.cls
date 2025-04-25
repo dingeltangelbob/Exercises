@@ -289,35 +289,35 @@
 %%% Solution switches and commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \ks@sol@save{<arg>}. Contain <arg> if and only if the current solution key \ks@solkey is TRUE. Whenever you want to execute <arg> only in the case when solutions are enabled use this command.
+% \ks@sol@save{<arg>}. Contain <arg> if and only if the current mode key \ks@solkey is TRUE. Whenever you want to execute <arg> only in the case when a specific mode is enabled use this command.
 \newcommand{\ks@sol@save}[1]{%
     \expandafter\csname if@ks@\ks@solkey\endcsname%
     #1%
     \fi%
 }
 
-% \IfSolution[<key>]{<code>} Execute <code> if and only if the solutions of the given key <key> (default: exercise) is enabled.
-\newcommand{\IfSolution}[2][exercise]{%
+% \IfMode[<mode>]{<code>} Execute <code> if and only if the given mode <mode> (default: exercise) is enabled.
+\newcommand{\IfMode}[2][exercise]{%
     \def\ks@solkey{#1}% set the given key
     \ks@sol@save{#2}% execute code save
     \def\ks@solkey{}% clear the given key
 }
 
-% \NewpageIfSolution[<key>] Make a new page if and only if the solution for the key <key> (default: exercise) is enabled.
-\newcommand{\NewpageIfSolution}[1][exercise]{%
-    \IfSolution[#1]{\newpage}%
+% \NewpageIfMode[<mode>] Make a new page if and only if the given mode <mode> (default: exercise) is enabled.
+\newcommand{\NewpageIfMode}[1][exercise]{%
+    \IfMode[#1]{\newpage}%
 }
 
-% \IfSolutionDisabled[<key>]{<code>} Execute <code> if and only if the solution for the key <key> (default: exercise) is disabled.
-\newcommand{\IfSolutionDisabled}[2][exercise]{%
+% \IfModeDisabled[<mode>]{<code>} Execute <code> if and only if the given mode <mode> (default: exercise) is disabled.
+\newcommand{\IfModeDisabled}[2][exercise]{%
     \expandafter\csname if@ks@#1\endcsname\else%
     #2%
     \fi%
 }
 
-% \NewpageIfSolutionDisabled[<key>] Make a new page if and only if the solution for the key <key> (default: exercise) is disabled.
-\newcommand{\NewpageIfSolutionDisabled}[1]{%
-    \IfSolutionDisabled[#1]{\newpage}%
+% \NewpageIfModeDisabled[<key>] Make a new page if and only if mode <mode> (default: exercise) is disabled.
+\newcommand{\NewpageIfModeDisabled}[1]{%
+    \IfModeDisabled[#1]{\newpage}%
 }
 
 
@@ -552,7 +552,7 @@
 
 \newcommand{\tags}[1]{%
     \if@ks@tags{%
-        \textbf{Tags:} #1\\
+        \textbf{Tags:} #1\par
     }%
     \fi%
 }

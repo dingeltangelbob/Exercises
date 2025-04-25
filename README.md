@@ -271,10 +271,10 @@ Available display modes include:
 
 The `exercises` class provides the following commands for controlling visibility based on display modes. Each command accepts an optional argument specifying the display mode it applies to. If no argument is given, it defaults to `exercise`.
 
-- `\IfSolution[<mode>]{<command>}`: Executes `<command>` only if the specified display mode is enabled. Defaults to `exercise`.
-- `\IfSolutionDisabled[<mode>]{<command>}`: Executes `<command>` only if the specified display mode is disabled. Defaults to `exercise`.
-- `\NewpageIfSolution[<mode>]`: Inserts a new page if the specified display mode is enabled. Defaults to `exercise`.
-- `\NewpageIfSolutionDisabled[<mode>]`: Inserts a new page if the specified display mode is disabled. Defaults to `exercise`.
+- `\IfMode[<mode>]{<command>}`: Executes `<command>` only if the specified display mode is enabled. Defaults to `exercise`.
+- `\IfModeDisabled[<mode>]{<command>}`: Executes `<command>` only if the specified display mode is disabled. Defaults to `exercise`.
+- `\NewpageIfMode[<mode>]`: Inserts a new page if the specified display mode is enabled. Defaults to `exercise`.
+- `\NewpageIfModeDisabled[<mode>]`: Inserts a new page if the specified display mode is disabled. Defaults to `exercise`.
 
 ---
 

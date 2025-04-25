@@ -37,7 +37,7 @@ function New-Sheets {
       if ($Item.post -or $Item.post -eq "") {
         $tmp += "`n$($Item.post)`n"
       } else {
-        $tmp += "`n\NewpageIfSolution[note]`n"
+        $tmp += "`n\NewpageIfMode[note]`n"
       }
   		$Content += "`n" + $tmp
   	}
