@@ -498,6 +498,14 @@
 \setlist[enumerate,1]{label*=\alph*)}
 \setlist[enumerate,2]{label=\roman*),ref=\alph{enumi}.\roman*)}
 
+% Definie col-key for lists. You can use \begin{enumerate}[cols=n] for a list of n columns. TODO: No correct display, if no text for multicol list in an exercise
+\SetEnumitemKey{cols}{
+    itemsep = 1\itemsep,
+    parsep = 1\parsep,
+    before = \raggedcolumns\begin{multicols}{#1},
+        after = \end{multicols}
+}
+
 % Item label for wrong (w) answers in quizes
 \def\ks@wlable{$\square$}
 
