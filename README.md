@@ -372,12 +372,10 @@ Subtasks can be displayed in multiple columns using the `columns` option:
 ```latex
 \begin{exercise}
     Calculate the following:
-    \begin{multicols}{2}
-        \begin{enumerate}
+        \begin{enumerate}[cols=2]
             \item $3+4$
             \item $7-2$
         \end{enumerate}
-    \end{multicols}
 \end{exercise}
 ```
 

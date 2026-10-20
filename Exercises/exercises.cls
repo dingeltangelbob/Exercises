@@ -498,12 +498,11 @@
 \setlist[enumerate,1]{label*=\alph*)}
 \setlist[enumerate,2]{label=\roman*),ref=\alph{enumi}.\roman*)}
 
-% Definie col-key for lists. You can use \begin{enumerate}[cols=n] for a list of n columns. TODO: No correct display, if no text for multicol list in an exercise
+% Definie col-key for lists. You can use \begin{enumerate}[cols=n] for a list of n columns. TODO: No correct display, if no text befor multicol list in an exercise
+\setlength{\multicolsep}{\parsep}
 \SetEnumitemKey{cols}{
-    itemsep = 1\itemsep,
-    parsep = 1\parsep,
-    before = \raggedcolumns\begin{multicols}{#1},
-        after = \end{multicols}
+    before = \begin{multicols}{#1},
+    after = \end{multicols}
 }
 
 % Item label for wrong (w) answers in quizes
@@ -519,9 +518,9 @@
 \newcommand{\itemw}{\item[\ks@wlable]}
 
 % Define the quiz enviroment
-\newenvironment{quiz}{%
+\newenvironment{quiz}[1][]{%
     %
-    \begin{itemize}% start a normal itemize enviroment
+    \begin{itemize}[#1]% start a normal itemize enviroment
         %
         \renewcommand{\labelitemi}{\ks@wlable}% redefine the standard item label
         %
